@@ -13,7 +13,6 @@ with
             cast(ORDERQTY as int) as order_qty,
             cast(UNITPRICE as decimal) as unit_price,
             cast(UNITPRICEDISCOUNT as decimal) as unit_price_discount,
-            cast(ROWGUID as varchar) as row_guid,
 
         from order_details
     )

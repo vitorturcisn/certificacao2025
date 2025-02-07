@@ -1,0 +1,50 @@
+version: 2
+
+sources:
+  - name: erp_ADVENTURE_WORKS
+    description: 'This is the source for the ADVENTURE WORKS ERP system containing sales, products and transaction data.'
+    database: FEA24_11
+    schema: RAW_ADVENTURE_WORKS  
+    tables:
+      - name: PRODUCT
+        description: 'Table containing product data.'
+        columns:
+          - name: PRODUCTID
+            description: 'Primary key of the product table.'
+            tests:
+              - unique
+              - not_null
+      - name: CREDITCARD
+        description: 'Table containing credit card information.'
+      - name: SALESREASON
+        description: 'Sales reasons related to transactions.'
+      - name: SALESORDERHEADERSALESREASON
+        description: 'Relation between sales order headers and sales reasons.'
+      - name: SALESORDERHEADER
+        description: 'Sales order headers.'
+      - name: SALESORDERDETAIL
+        description: 'Sales order details.'
+      - name: SPECIALOFFERPRODUCT
+        description: 'Association between special offers and products.'
+      - name: SPECIALOFFER
+        description: 'Special offers available to customers.'
+      - name: CUSTOMER
+        description: 'Customer registration data.'
+      - name: STORE
+        description: 'Information about registered stores.'
+      - name: BUSINESSENTITY
+        description: 'Business entities in the system.'
+      - name: BUSINESSENTITYADDRESS
+        description: 'Addresses associated with business entities.'
+      - name: ADDRESS
+        description: 'Table containing address data.'
+      - name: STATEPROVINCE
+        description: 'Information about states and provinces.'
+      - name: SALESTERRITORY
+        description: 'Sales territories.'
+      - name: COUNTRYREGION
+        description: 'Countries and regions relevant to sales.'
+      - name: CURRENCY
+        description: 'Table containing information about different currencies used in transactions.'
+      - name: CURRENCYRATE
+        description: 'Historical exchange rates between currencies.'

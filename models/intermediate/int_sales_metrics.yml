@@ -1,0 +1,105 @@
+version: 2
+
+models:
+  - name: int_sales_metrics
+    description: This table joins the `stg_sales_order_header` and `stg_order_details` staging tables, calculating key metrics for total and gross values of orders, along with additional details such as order delays and discount applications.
+    columns:
+      - name: pk_sales_order
+        description: Primary key identifying each sales order.
+        tests:
+          - not_null
+
+      - name: product_name
+        description: Name of the product in the order.
+        tests:
+          - not_null
+
+      - name: product_number
+        description: Product number for the item ordered.
+        tests:
+          - not_null
+
+      - name: order_qty
+        description: Quantity of the product ordered.
+        tests:
+          - not_null
+
+      - name: unit_price
+        description: Price per unit of the product in the order.
+        tests:
+          - not_null
+
+      - name: unit_price_discount
+        description: Discount applied to the unit price of the product in the order.
+
+      - name: order_date
+        description: Date when the order was placed.
+        tests:
+          - not_null
+
+      - name: due_date
+        description: Date by which the order is expected to be delivered
+        tests:
+          - not_null
+        
+      - name: ship_date
+        description: Date when the order was shipped.
+        tests:
+          - not_null
+
+      - name: status
+        description: Current status of the order (e.g., pending, completed, shipped).
+        tests:
+          - not_null
+
+      - name: online_order
+        description: Indicates if the order was placed online.
+        tests:
+          - not_null
+
+      - name: customer_id
+        description: Unique identifier for the customer who placed the order.
+        tests:
+          - not_null
+
+      - name: salesperson_id
+        description: Unique identifier for the salesperson handling the order.
+
+      - name: territory_id
+        description: Unique identifier for the sales territory where the order was placed.
+        tests:
+          - not_null
+
+      - name: bill_to_address_id
+        description: Unique identifier for the billing address associated with the order.
+        tests:
+          - not_null
+
+      - name: ship_to_address_id
+        description: Unique identifier for the shipping address associated with the order.
+
+      - name: credit_card_id
+        description: Unique identifier for the credit card used to pay for the order.
+
+      - name: gross_total
+        description: Gross total value of the order (including discounts, adjusted by currency rate).
+        tests:
+          - not_null
+
+      - name: net_total
+        description: Net total value of the order (after applying discounts, adjusted by currency rate).
+        tests:
+          - not_null
+
+      - name: lead_time_shipping
+        description: Time between the order date and the ship date (in days).
+        tests:
+          - not_null
+
+      - name: order_delayed
+        description: Flag indicating if the order was shipped after the due date.
+        tests:
+          - not_null
+
+      - name: discount_applied
+        description: Flag indicating if a discount was applied to the order.

@@ -1,0 +1,46 @@
+version: 2
+
+models:
+  - name: stg_erp__state_province
+    description: Staging table for state and province information. This table contains data about states and provinces, including the associated territory and country region, as well as modification dates.
+    columns:
+      - name: pk_state_province
+        description: Primary key uniquely identifying each state or province.
+        tests:
+          - not_null
+          - unique
+
+      - name: fk_territory
+        description: Foreign key referring to the territory associated with the state or province.
+        tests:
+          - not_null
+
+      - name: fk_country_region
+        description: Foreign key referring to the country region associated with the state or province.
+        tests:
+          - not_null
+
+      - name: state_province_code
+        description: The unique code representing the state or province.
+        tests:
+          - not_null
+
+      - name: is_only_state_province
+        description: Flag indicating whether the record represents only a state or province.
+        tests:
+          - not_null
+
+      - name: state_province_name
+        description: The name of the state or province.
+        tests:
+          - not_null
+
+      - name: row_guid
+        description: Unique identifier for each row.
+        tests:
+          - not_null
+
+      - name: modification_date
+        description: The date when the state or province record was last modified.
+        tests:
+          - not_null

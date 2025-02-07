@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: stg_erp__country_region
+    description: Staging table for country region details. This table contains information about different country regions, including their names and modification dates.
+    columns:
+      - name: pk_country_region
+        description: Primary key uniquely identifying each country region.
+        tests:
+          - not_null
+          - unique
+
+      - name: country_region_name
+        description: The name of the country region (e.g., continent, geographical area).
+        tests:
+          - not_null
+
+      - name: country_region_modified_date
+        description: The date when the country region record was last modified.
+        tests:
+          - not_null

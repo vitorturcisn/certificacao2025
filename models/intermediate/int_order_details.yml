@@ -1,0 +1,45 @@
+version: 2
+
+models:
+  - name: int_order_details
+    description: This is an integration table combining data from the `products` and `order_details` staging tables. It contains detailed information about each product ordered, including the sales order details, product characteristics, special offers, and pricing information.
+    columns:
+      - name: pk_product
+        description: Primary key uniquely identifying each product.
+        tests:
+          - not_null
+
+      - name: pk_sales_order
+        description: Foreign key referring to the sales order.
+        tests:
+          - not_null
+
+      - name: fk_special_offer
+        description: Foreign key referencing the special offer applied to the product (if any).
+        tests:
+          - not_null
+
+      - name: product_name
+        description: Name of the product.
+        tests:
+          - not_null
+
+      - name: product_number
+        description: Unique identifier for the product.
+        tests:
+          - not_null
+
+      - name: order_qty
+        description: Quantity of the product ordered.
+        tests:
+          - not_null
+
+      - name: unit_price
+        description: Price per unit of the product.
+        tests:
+          - not_null
+
+      - name: unit_price_discount
+        description: Discount applied to the unit price of the product.
+        tests:
+          - not_null

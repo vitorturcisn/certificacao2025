@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: stg_credit_card
+    description: Staging table for credit card details extracted from the ERP system. This table contains information about credit cards used in transactions.
+    columns:
+      - name: pk_credit_card
+        description: Primary key uniquely identifying each credit card record.
+        tests:
+          - unique
+          - not_null
+
+      - name: card_type
+        description: Type of the credit card (e.g., Visa, MasterCard, American Express).
+        tests:
+          - not_null
+
+      - name: card_number
+        description: Full number of the credit card.
+        tests:
+          - not_null

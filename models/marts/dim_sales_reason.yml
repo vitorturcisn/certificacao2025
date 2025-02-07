@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: dim_sales_reason
+    description: Dimension table categorizing the reasons associated with sales.
+    columns:
+      - name: pk_sales_order
+        description: Primary key uniquely identifying each sales reason record.
+        tests:
+          - unique
+          - not_null
+
+      - name: reason_names
+        description: Descriptive names for the reason associated with the sale (e.g., promotion, recommendation).
+        tests:
+          - not_null
+
+      - name: reason_types
+        description: Categorys of the sales reason, classifying `reason_name` (e.g., internal, external, seasonal).
+        tests:
+          - not_null

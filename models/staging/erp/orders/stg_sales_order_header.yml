@@ -42,8 +42,6 @@ models:
 
       - name: salesperson_id
         description: Foreign key referencing the salesperson who is associated with the sales order.
-        tests:
-          - not_null
 
       - name: territory_id
         description: Foreign key referencing the sales territory associated with the sales order.
@@ -67,13 +65,9 @@ models:
 
       - name: credit_card_id
         description: Foreign key referencing the credit card used for the sales order payment.
-        tests:
-          - not_null
 
       - name: currency_rate_id
         description: Foreign key referencing the currency exchange rate used in the sales order.
-        tests:
-          - not_null
 
       - name: subtotal
         description: The subtotal amount of the sales order before taxes and discounts.

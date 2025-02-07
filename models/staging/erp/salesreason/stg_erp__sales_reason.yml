@@ -13,6 +13,7 @@ models:
       - name: reason_name
         description: Name of the sales reason (e.g., Price, Magazine Advertisement).
         tests:
+          - unique
           - not_null
 
       - name: reason_type

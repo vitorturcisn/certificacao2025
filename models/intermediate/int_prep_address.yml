@@ -2,20 +2,21 @@ version: 2
 
 models:
   - name: int_prep_address
-    description: This is an integration table combining data from the `int_prep_location` and `stg_address` staging tables. It provides detailed address information along with related territory and country region details.
+    description: This table combines data from the `int_prep_location` and `stg_address` staging tables, providing detailed address information along with associated state, territory, and country region details.
     columns:
-      - name: pk_state_province
-        description: Primary key uniquely identifying the state or province.
+      - name: pk_address
+        description: Primary key uniquely identifying each address.
+        tests:
+          - not_null
+          - unique
+
+      - name: city
+        description: Name of the city associated with the address.
         tests:
           - not_null
 
       - name: state_province_name
-        description: Name of the state or province.
-        tests:
-          - not_null
-
-      - name: territory_id
-        description: Foreign key referencing the territory associated with the address.
+        description: Name of the state or province associated with the address.
         tests:
           - not_null
 
@@ -29,12 +30,12 @@ models:
         tests:
           - not_null
 
-      - name: pk_address
-        description: Primary key uniquely identifying each address.
+      - name: state_province_id
+        description: Foreign key referencing the state or province associated with the address.
         tests:
           - not_null
 
-      - name: city
-        description: Name of the city associated with the address.
+      - name: territory_id
+        description: Foreign key referencing the territory associated with the address.
         tests:
           - not_null

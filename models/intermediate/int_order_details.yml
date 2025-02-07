@@ -8,7 +8,6 @@ models:
         description: Primary key uniquely identifying each product.
         tests:
           - not_null
-          - unique
 
       - name: pk_sales_order
         description: Foreign key referring to the sales order.

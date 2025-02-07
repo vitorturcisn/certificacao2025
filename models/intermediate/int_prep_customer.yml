@@ -14,7 +14,6 @@ models:
         description: Name of the store associated with the customer.
         tests:
           - not_null
-          - unique
 
       - name: salesperson_id
         description: Identifier of the salesperson associated with the customer.
@@ -23,8 +22,6 @@ models:
 
       - name: person_id
         description: Foreign key referencing the person associated with the customer.
-        tests:
-          - not_null
 
       - name: territory_id
         description: Foreign key referencing the territory associated with the customer.

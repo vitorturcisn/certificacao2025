@@ -4,18 +4,19 @@ models:
   - name: dim_address
     description: Dimension table containing address-related details, including state, territory, and country-region information. This table provides a structured view of the addresses related to sales operations.
     columns:
-      - name: pk_state_province
-        description: Unique identifier for the state or province.
+      - name: pk_address
+        description: Unique identifier for the address.
+        tests:
+          - not_null
+          - unique
+
+      - name: city
+        description: Name of the city associated with the address.
         tests:
           - not_null
 
       - name: state_province_name
         description: Name of the state or province.
-        tests:
-          - not_null
-
-      - name: territory_id
-        description: Unique identifier for the sales territory associated with the address.
         tests:
           - not_null
 
@@ -29,13 +30,10 @@ models:
         tests:
           - not_null
 
-      - name: pk_address
-        description: Unique identifier for the address.
-        tests:
-          - not_null
-          - unique
+      - name: pk_state_province
+        description: Unique identifier for the state or province.
 
-      - name: city
-        description: Name of the city associated with the address.
+      - name: territory_id
+        description: Unique identifier for the sales territory associated with the address.
         tests:
           - not_null

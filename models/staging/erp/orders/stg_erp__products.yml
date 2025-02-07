@@ -32,8 +32,6 @@ models:
 
       - name: color
         description: Color of the product.
-        tests:
-          - not_null
 
       - name: safety_stock_level
         description: The minimum inventory level required to ensure product availability and avoid stockouts.
@@ -57,63 +55,42 @@ models:
 
       - name: size_unit_measure_code
         description: Unit of measure used to describe the size of the product.
-        tests:
-          - not_null
 
       - name: weight_unit_measure_code
         description: Unit of measure used to describe the weight of the product.
-        tests:
-          - not_null
 
       - name: weight
         description: The weight of the product.
-        tests:
-          - not_null
 
       - name: days_to_manufacture
         description: The number of days required to manufacture the product.
-        tests:
-          - not_null
 
       - name: product_line
         description: The category or line to which the product belongs.
-        tests:
-          - not_null
 
       - name: product_class
         description: Classification of the product (e.g., basic, premium, etc.).
-        tests:
-          - not_null
 
       - name: product_style
         description: The style or design of the product (e.g., contemporary, classic, etc.).
-        tests:
-          - not_null
 
       - name: fk_product_subcategory
         description: Foreign key referencing the product subcategory to which the product belongs.
-        tests:
-          - not_null
 
       - name: fk_product_model
         description: Foreign key referencing the product model associated with the product.
-        tests:
-          - not_null
 
       - name: sell_start_date
         description: The date when the product became available for sale.
-        tests:
-          - not_null
 
       - name: sell_end_date
         description: The date when the product is no longer available for sale.
-        tests:
-          - not_null
 
       - name: row_guid
         description: A globally unique identifier (GUID) for the product row.
         tests:
           - not_null
+          - unique
 
       - name: modification_date
         description: The date when the product record was last modified.

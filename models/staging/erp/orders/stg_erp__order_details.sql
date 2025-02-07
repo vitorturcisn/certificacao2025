@@ -18,6 +18,3 @@ with
 
 select *
 from renaming
-
-
-

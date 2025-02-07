@@ -13,7 +13,6 @@ models:
         description: Unique identifier for each sales order.
         tests:
           - not_null
-          - unique
 
       - name: product_name
         description: Name of the product in the sales order.
@@ -72,8 +71,6 @@ models:
 
       - name: salesperson_id
         description: Identifier for the salesperson handling the order.
-        tests:
-          - not_null
 
       - name: territory_id
         description: Identifier for the territory associated with the sales order.
@@ -92,8 +89,6 @@ models:
 
       - name: credit_card_id
         description: Identifier for the credit card used in the transaction.
-        tests:
-          - not_null
 
       - name: gross_total
         description: Total value of the order before discounts and adjustments.

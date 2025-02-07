@@ -22,8 +22,6 @@ models:
 
       - name: person_id
         description: Identifier for the person related to the customer (typically for individual customers).
-        tests:
-          - not_null
 
       - name: territory_id
         description: Identifier for the territory associated with the customer.

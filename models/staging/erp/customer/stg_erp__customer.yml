@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: stg_erp__customer
+    description: Staging table for customer information. This table contains details about customers, including associated person, store, and territory, as well as modification dates.
+    columns:
+      - name: customer_id
+        description: Primary key uniquely identifying each customer.
+        tests:
+          - not_null
+          - unique
+            
+      - name: person_id
+        description: Foreign key referring to the person associated with the customer.
+
+      - name: store_id
+        description: Foreign key referring to the store associated with the customer.
+        
+      - name: territory_id
+        description: Foreign key referring to the territory where the customer is located.
+        tests:
+          - not_null
+
+      - name: row_guid
+        description: Unique identifier for each row.
+        tests:
+          - not_null
+
+      - name: modification_date
+        description: The date when the customer record was last modified.
+        tests:
+          - not_null

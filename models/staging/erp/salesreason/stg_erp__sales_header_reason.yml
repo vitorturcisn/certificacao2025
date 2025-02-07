@@ -5,15 +5,13 @@ models:
     description: Staging table that captures the relationship between sales orders and their associated sales reasons.
     columns:
       - name: pk_sales_order
-        description: Primary key uniquely identifying each sales order.
+        description: Primary key identifying each sales order.
         tests:
-          - unique
           - not_null
 
       - name: pk_sales_reason
         description: Foreign key referencing the sales reason associated with the sales order.
         tests:
-          - unique
           - not_null
 
 

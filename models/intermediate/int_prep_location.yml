@@ -1,0 +1,60 @@
+version: 2
+
+models:
+  - name: int_prep_location
+    description: This integration table combines data from the `stg_state_province`, `sales_territory`, and `country_region` staging tables. It provides detailed information about state/province, sales territory, and the associated country/region.
+    columns:
+      - name: pk_state_province
+        description: Primary key uniquely identifying each state/province.
+        tests:
+          - not_null
+
+      - name: state_province_code
+        description: Code identifying the state or province.
+        tests:
+          - not_null
+
+      - name: state_province_name
+        description: Name of the state or province.
+        tests:
+          - not_null
+
+      - name: pk_territory
+        description: Primary key uniquely identifying the sales territory.
+        tests:
+          - not_null
+
+      - name: territory_name
+        description: Name of the sales territory.
+        tests:
+          - not_null
+
+      - name: sales_year_to_date
+        description: Sales year-to-date for the sales territory.
+        tests:
+          - not_null
+
+      - name: sales_last_year
+        description: Sales for the same period last year for the sales territory.
+        tests:
+          - not_null
+
+      - name: cost_year_to_date
+        description: Cost year-to-date for the sales territory.
+        tests:
+          - not_null
+
+      - name: cost_last_year
+        description: Cost for the same period last year for the sales territory.
+        tests:
+          - not_null
+
+      - name: pk_country_region
+        description: Primary key uniquely identifying the country/region.
+        tests:
+          - not_null
+
+      - name: country_region_name
+        description: Name of the country or region.
+        tests:
+          - not_null

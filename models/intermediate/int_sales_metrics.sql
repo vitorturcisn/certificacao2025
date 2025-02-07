@@ -1,5 +1,4 @@
 with 
-    -- Chamada das tabelas necessárias
     sales_order_header as (
         select *
         from {{ ref('stg_sales_order_header') }}

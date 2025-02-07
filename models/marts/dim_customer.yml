@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: dim_customer
+    description: Dimension table containing information about customers, including associated store, salesperson, and territory.
+    columns:
+      - name: customer_id
+        description: Unique identifier for each customer.
+        tests:
+          - not_null
+          - unique
+
+      - name: store_name
+        description: Name of the store associated with the customer.
+        tests:
+          - not_null
+
+      - name: salesperson_id
+        description: Identifier for the salesperson associated with the customer.
+        tests:
+          - not_null
+
+      - name: person_id
+        description: Identifier for the person related to the customer (typically for individual customers).
+        tests:
+          - not_null
+
+      - name: territory_id
+        description: Identifier for the territory associated with the customer.
+        tests:
+          - not_null

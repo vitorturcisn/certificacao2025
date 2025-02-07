@@ -10,7 +10,6 @@ with
         from {{ ref('stg_erp__store') }}
     ),
 
-    -- Enriquecendo os dados com o LEFT JOIN
     enriched_customer as (
         select
             customer.CUSTOMER_ID,

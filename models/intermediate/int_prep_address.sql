@@ -1,5 +1,4 @@
 with 
-    -- Chamada das tabelas necessárias
     address as (
         select *
         from {{ ref('stg_erp__address') }}

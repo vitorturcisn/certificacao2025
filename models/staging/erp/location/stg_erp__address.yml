@@ -1,0 +1,50 @@
+version: 2
+
+models:
+  - name: stg_erp__address
+    description: Staging table for address details. This table contains information about the address, including location, state, city, and postal code.
+    columns:
+      - name: pk_address
+        description: Primary key uniquely identifying each address.
+        tests:
+          - not_null
+
+      - name: fk_state_province
+        description: Foreign key referencing the state or province associated with the address.
+        tests:
+          - not_null
+
+      - name: address_line1
+        description: The first line of the address (e.g., street name and number).
+        tests:
+          - not_null
+
+      - name: address_line2
+        description: The second line of the address (e.g., apartment number or additional details).
+        tests:
+          - not_null
+
+      - name: city
+        description: The city where the address is located.
+        tests:
+          - not_null
+
+      - name: postal_code
+        description: The postal code of the address.
+        tests:
+          - not_null
+
+      - name: spatial_location
+        description: Spatial location details for the address, typically representing geographic coordinates.
+        tests:
+          - not_null
+
+      - name: row_guid
+        description: Globally unique identifier (GUID) for the address row.
+        tests:
+          - not_null
+
+      - name: modification_date
+        description: The date when the address record was last modified.
+        tests:
+          - not_null

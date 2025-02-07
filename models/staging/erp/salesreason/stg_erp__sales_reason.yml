@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: stg_erp__sales_reason
+    description: Staging table for sales reasons extracted from the ERP system. This table contains information about reasons associated with sales activities.
+    columns:
+      - name: pk_sales_reason
+        description: Primary key uniquely identifying each sales reason record.
+        tests:
+          - unique
+          - not_null
+
+      - name: reason_name
+        description: Name of the sales reason (e.g., Price, Magazine Advertisement).
+        tests:
+          - not_null
+
+      - name: reason_type
+        description: Category or classification of the sales reason (e.g., Marketing, Promotion).
+        tests:
+          - not_null
+
+
+
+

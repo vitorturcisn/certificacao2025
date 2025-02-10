@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: int__prep_store
+    description: |
+      This model enriches the `store` data by adding business address information. It combines the `store` table, which contains store details like store name, with the `business_address` table, which provides the address IDs associated with each store. A LEFT JOIN is used to link the two tables based on `BUSINESS_ENTITY_ID`, ensuring that all stores are included, even if they do not have a corresponding business address.
+    columns:
+      - name: BUSINESS_ENTITY_ID
+        description: Unique identifier for the business entity. This is the primary key used to link the `store` and `business_address` tables.
+        tests:
+          - not_null
+
+      - name: STORE_NAME
+        description: The name of the store.
+        tests:
+          - not_null
+
+      - name: ADDRESS_ID
+        description: The identifier for the business address associated with the store. This is retrieved from the `business_address` table. If no address is linked, this column will be null.

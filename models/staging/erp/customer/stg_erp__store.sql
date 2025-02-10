@@ -16,7 +16,7 @@ WITH
 SELECT
     business_entity_id,
     CASE
-        WHEN row_num > 1 THEN CONCAT(store_name, ' ', row_num)  -- Sufixo numérico para os nomes repetidos
+        WHEN row_num > 1 THEN CONCAT(store_name, ' ', row_num)
         ELSE store_name
     END AS store_name,
     salesperson_id

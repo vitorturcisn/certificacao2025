@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: stg_sales_person
+    description: This table contains detailed information about salespersons, including their business entity, sales targets, and financial incentives. It is sourced from the `erp_ADVENTURE_WORKS.SALESPERSON` table and casts relevant fields for enriched analysis.
+    columns:
+      - name: business_entity_id
+        description: Primary key uniquely identifying each salesperson entity.
+        tests:
+          - not_null
+          - unique
+
+      - name: sales_quota
+        description: Sales target assigned to the salesperson for a specific period.
+
+      - name: bonus
+        description: Financial bonus earned by the salesperson.
+
+      - name: commission_pct
+        description: Percentage of sales commission attributed to the salesperson.
+
+
+

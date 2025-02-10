@@ -3,27 +3,28 @@ version: 2
 models:
   - name: dim_customer
     description: Dimension table containing information about customers, including associated store, salesperson, and territory.
+   
     columns:
-      - name: customer_id
-        description: Unique identifier for each customer.
+      - name: CUSTOMER_ID
+        description: Unique identifier for the customer. This is the primary key used to link the customer with the store and person data.
         tests:
           - not_null
           - unique
 
-      - name: store_name
-        description: Name of the store associated with the customer.
+      - name: STORE_NAME
+        description: The name of the store associated with the customer. This is retrieved from the `store` table.
+        tests:
+          - unique
+
+      - name: customer_name
+        description: The full name of the customer, sourced from the `person` table. In case of duplicates, " 2" is added to the name to ensure uniqueness.
+        tests:
+          - unique
+
+      - name: ADDRESS_ID
+        description: The identifier for the address associated with the customer. It is determined by the higher of the two address IDs (store and person addresses) based on the `ROW_NUMBER()` function.
         tests:
           - not_null
 
-      - name: salesperson_id
-        description: Identifier for the salesperson associated with the customer.
-        tests:
-          - not_null
-
-      - name: person_id
-        description: Identifier for the person related to the customer (typically for individual customers).
-
-      - name: territory_id
-        description: Identifier for the territory associated with the customer.
-        tests:
-          - not_null
+      - name: EMAIL_PROMOTION
+        description: Indicates whether the customer accepts email promotions, sourced from the `person` table.

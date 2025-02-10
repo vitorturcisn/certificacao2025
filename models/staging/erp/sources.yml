@@ -50,5 +50,9 @@ sources:
         description: ARRUMAR
       - name: PRODUCTSUBCATEGORY
         description: ARRUMAR
+      - name: SALESPERSON
+        description: ARRUMAR
+
+
 
 

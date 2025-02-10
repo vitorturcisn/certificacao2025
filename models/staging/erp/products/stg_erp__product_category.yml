@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: stg_erp__product_category
+    description: |
+      This model renames and casts two key columns (`PRODUCTCATEGORYID` and `NAME`) from the `PRODUCTCATEGORY` table, making them more usable for further analysis. The columns are renamed to `pk_product_category` and `category_name`, with the appropriate data types (`INT` for the ID and `VARCHAR` for the name).
+    columns:
+      - name: pk_product_category
+        description: Unique identifier for the product category.
+        tests:
+          - not_null
+          - unique
+
+      - name: category_name
+        description: The name of the product category.
+        tests:
+          - not_null
+          - unique

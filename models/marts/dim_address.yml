@@ -32,8 +32,3 @@ models:
 
       - name: pk_state_province
         description: Unique identifier for the state or province.
-
-      - name: territory_id
-        description: Unique identifier for the sales territory associated with the address.
-        tests:
-          - not_null

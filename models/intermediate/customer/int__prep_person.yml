@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: int__prep_person
+    description: |
+      This model enriches the `person` data by adding business address information. It combines the `person` table, which contains basic details like full name and email promotion preferences, with the `business_address` table, which provides the address IDs related to each person. A LEFT JOIN is used to link the two tables based on `BUSINESS_ENTITY_ID`, ensuring that all persons are included, even if they do not have a corresponding address.
+    columns:
+      - name: BUSINESS_ENTITY_ID
+        description: Unique identifier for the business entity. This is the primary key used to link the `person` and `business_address` tables.
+        tests:
+          - not_null
+
+      - name: FULL_NAME
+        description: The full name of the person.
+        tests:
+          - not_null
+
+      - name: EMAIL_PROMOTION
+        description: Indicates if the person has opted in for email promotions. This is a boolean or a flag field.
+        tests:
+          - not_null
+
+      - name: ADDRESS_ID
+        description: The identifier for the business address associated with the person. This is retrieved from the `business_address` table. If no address is linked, this column will be null.

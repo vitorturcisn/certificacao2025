@@ -15,6 +15,7 @@ with
             product_data.pk_product,
             order_details_.pk_sales_order,
             order_details_.fk_special_offer,
+            product_data.SAFETY_STOCK_LEVEL
             product_data.product_name,
             product_data.product_number,
             order_details_.order_qty,

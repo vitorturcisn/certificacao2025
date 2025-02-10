@@ -29,13 +29,3 @@ models:
         description: Name of the country region associated with the address.
         tests:
           - not_null
-
-      - name: state_province_id
-        description: Foreign key referencing the state or province associated with the address.
-        tests:
-          - not_null
-
-      - name: territory_id
-        description: Foreign key referencing the territory associated with the address.
-        tests:
-          - not_null

@@ -46,4 +46,9 @@ sources:
         description: 'Countries and regions relevant to sales.'
       - name: PERSON
         description: ARRUMAR
+      - name: PRODUCTCATEGORY
+        description: ARRUMAR
+      - name: PRODUCTSUBCATEGORY
+        description: ARRUMAR
+
 

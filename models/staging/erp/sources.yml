@@ -44,7 +44,6 @@ sources:
         description: 'Sales territories.'
       - name: COUNTRYREGION
         description: 'Countries and regions relevant to sales.'
-      - name: CURRENCY
-        description: 'Table containing information about different currencies used in transactions.'
-      - name: CURRENCYRATE
-        description: 'Historical exchange rates between currencies.'
+      - name: PERSON
+        description: ARRUMAR
+

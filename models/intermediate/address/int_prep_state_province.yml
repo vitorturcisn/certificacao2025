@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: int_prep_location
+  - name: int_prep_state_province
     description: This integration table combines data from the `stg_state_province`, `sales_territory`, and `country_region` staging tables. It provides detailed information about state/province, sales territory, and the associated country/region.
     columns:
       - name: pk_state_province

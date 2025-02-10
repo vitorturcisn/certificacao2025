@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: int_prep_customer
+    description: This model consolidates customer data with related store and person details, prioritizing the highest address ID between the store and person for each customer. It ensures that each customer has a unique entry by selecting the highest address ID when duplicates exist.
+    columns:
+      - name: customer_id
+        description: Unique identifier for each customer.
+        tests:
+          - not_null
+          - unique
+
+      - name: store_name
+        description: Name of the store associated with the customer.
+
+      - name: full_name
+        description: Full name of the person associated with the customer.
+
+      - name: email_promotion
+        description: Indicates whether the person has opted into email promotions (numeric flag).
+        tests:
+          - not_null
+              
+      - name: address_id
+        description: Unique identifier for the address associated with the customer. The address is selected based on the highest address ID between store and person records, ensuring no duplicate entries for a customer.
+        tests:
+          - not_null

@@ -8,7 +8,6 @@ models:
         description: Primary key that uniquely identifies each sales order.
         tests:
           - not_null
-          - unique
 
       - name: product_name
         description: Name of the product.

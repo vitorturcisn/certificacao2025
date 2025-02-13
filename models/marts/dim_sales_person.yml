@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: dim_sales_person
+    description: Dimension table containing sales person information by joining data from the `stg_sales_person` and `stg_erp__person` tables. It provides detailed information about sales representatives, including their sales quotas and contact preferences.
+    columns:
+      - name: sales_person_id
+        description: Unique identifier for the sales person, derived from the `BUSINESS_ENTITY_ID` in the `stg_sales_person` table.
+        tests:
+          - not_null
+          - unique
+
+      - name: FULL_NAME
+        description: Full name of the sales person, derived from the `stg_erp__person` table.
+
+      - name: SALES_QUOTA
+        description: Sales quota assigned to the sales person, representing expected sales targets.
+
+      - name: EMAIL_PROMOTION
+        description: Indicates whether the sales person is enrolled in promotional email campaigns.

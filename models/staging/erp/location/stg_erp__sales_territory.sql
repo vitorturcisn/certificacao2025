@@ -13,8 +13,7 @@ with
             cast(SALESLASTYEAR as decimal) as sales_last_year,
             cast(COSTYTD as decimal) as cost_year_to_date,
             cast(COSTLASTYEAR as decimal) as cost_last_year,
-            cast(ROWGUID as varchar) as row_guid,
-            cast(MODIFIEDDATE as date) as modification_date
+
         from source_sales_territory
     )
 

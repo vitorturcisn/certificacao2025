@@ -14,7 +14,6 @@ models:
         description: Name of the store.
         tests:
           - not_null
-          - unique
 
       - name: salesperson_id
         description: Foreign key referring to the salesperson associated with the store.

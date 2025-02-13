@@ -34,13 +34,3 @@ models:
         description: The name of the state or province.
         tests:
           - not_null
-
-      - name: row_guid
-        description: Unique identifier for each row.
-        tests:
-          - not_null
-
-      - name: modification_date
-        description: The date when the state or province record was last modified.
-        tests:
-          - not_null

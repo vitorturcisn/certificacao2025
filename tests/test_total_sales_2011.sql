@@ -1,7 +1,6 @@
 /*
     This test ensures that the 2011 gross sales match
     the audited accounting value of $12,646,112.00
-    with a tolerance of 0.0001% (±12.65)
 */
 
 with
@@ -14,4 +13,4 @@ with
 select total_gross_sales,
        total_gross_sales - 12646112.00 as difference
 from sales_in_2011
-where total_gross_sales not between 12646099.35 and 12646124.65
+where total_gross_sales not between 12646111.00 and 12646113.0

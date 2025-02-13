@@ -8,7 +8,6 @@ with
         select
             cast(COUNTRYREGIONCODE as varchar) as pk_country_region,
             cast(NAME as varchar) as country_region_name,
-            cast(MODIFIEDDATE as date) as country_region_modified_date
         from source_country_region
     )
 

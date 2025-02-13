@@ -11,8 +11,8 @@ with
             cast(PRODUCTID as int) as fk_product,
             cast(SPECIALOFFERID as int) as fk_special_offer,
             cast(ORDERQTY as int) as order_qty,
-            cast(UNITPRICE as numeric(18,2)) as unit_price,  
-            cast(UNITPRICEDISCOUNT as numeric(18,2)) as unit_price_discount
+            cast(UNITPRICE as numeric(18,4)) as unit_price,  
+            cast(UNITPRICEDISCOUNT as numeric(18,4)) as unit_price_discount
         from order_details
     )
 

@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: enriched_order_details
+  - name: int_order_details
     description: This table contains enriched order details, combining product and order information. It includes detailed data about each product ordered, such as the product name, category, subcategory, order quantity, unit price, and applied discounts.
     columns:
       - name: pk_sales_order

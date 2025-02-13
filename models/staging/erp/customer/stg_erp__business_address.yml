@@ -2,8 +2,7 @@ version: 2
 
 models:
   - name: stg_erp__business_address
-    description: |
-      This model renames and casts two key columns (`BUSINESSENTITYID` and `ADDRESSID`) from the `BUSINESSENTITYADDRESS` table, making them easier to work with in subsequent analyses. It converts these columns into `business_entity_id` and `address_id` with integer data types to ensure consistency in the data.
+    description: This model renames and casts two key columns (`BUSINESSENTITYID` and `ADDRESSID`) from the `BUSINESSENTITYADDRESS` table, making them easier to work with in subsequent analyses. It converts these columns into `business_entity_id` and `address_id` with integer data types to ensure consistency in the data.
     columns:
       - name: business_entity_id
         description: Identifier for a business entity.

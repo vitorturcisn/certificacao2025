@@ -11,10 +11,6 @@ with
             cast(ADDRESSLINE1 as varchar) as address_line1,
             cast(ADDRESSLINE2 as varchar) as address_line2,
             cast(CITY as varchar) as city,
-            cast(POSTALCODE as varchar) as postal_code,
-            cast(SPATIALLOCATION as varchar) as spatial_location,
-            cast(ROWGUID as varchar) as row_guid,
-            cast(MODIFIEDDATE as date) as modification_date
         from source_address
     )
 

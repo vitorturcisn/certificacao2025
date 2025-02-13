@@ -8,14 +8,13 @@ models:
         description: Primary key uniquely identifying each sales order.
         tests:
           - not_null
-          - unique
 
-      - name: reason_names
-        description: Names of the reason for the sales order (e.g., discount applied, customer preference).
+      - name: reason_name
+        description: Name of the reason for the sales order (e.g., discount applied, customer preference).
         tests:
           - not_null
 
-      - name: reason_types
-        description: Types or categorys of the sales reason (e.g., promotion, seasonal offer).
+      - name: reason_type
+        description: Type or category of the sales reason (e.g., promotion, seasonal offer).
         tests:
           - not_null

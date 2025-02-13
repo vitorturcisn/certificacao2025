@@ -26,20 +26,3 @@ models:
         description: The city where the address is located.
         tests:
           - not_null
-
-      - name: postal_code
-        description: The postal code of the address.
-
-      - name: spatial_location
-        description: Spatial location details for the address, typically representing geographic coordinates.
-
-      - name: row_guid
-        description: Globally unique identifier (GUID) for the address row.
-        tests:
-          - not_null
-          - unique
-
-      - name: modification_date
-        description: The date when the address record was last modified.
-        tests:
-          - not_null

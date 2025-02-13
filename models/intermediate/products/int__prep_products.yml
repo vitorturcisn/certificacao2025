@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: int__prep_products
+    description: This table consolidates product information by joining data from the `stg_erp__products`, `stg_erp__product_sub_category`, and `stg_erp__product_category` tables. It provides enriched details about each product, including its associated category and subcategory names.
+    columns:
+      - name: PK_PRODUCT
+        description: Primary key uniquely identifying each product.
+        tests:
+          - not_null
+          - unique
+
+      - name: PRODUCT_NAME
+        description: Name of the product.
+
+      - name: FK_PRODUCT_SUBCATEGORY
+        description: Foreign key referencing the product subcategory.
+
+      - name: CATEGORY_NAME
+        description: Name of the product category, derived from the `product_category` table.
+
+      - name: sub_category_name
+        description: Name of the product subcategory, derived from the `product_sub_category` table.

@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: stg_erp__person
+    description: Staging table that combines personal information, including full names and email promotion status, from the ERP system's PERSON table.
+    columns:
+      - name: business_entity_id
+        description: Primary key uniquely identifying each business entity. This column is derived from the BUSINESSENTITYID field.
+        tests:
+          - not_null
+          - unique
+
+      - name: full_name
+        description: Concatenated full name of the person, formed by combining TITLE, FIRSTNAME, MIDDLENAME, LASTNAME, and SUFFIX fields. Null values are handled to ensure that missing components do not break the full name.
+        tests:
+          - not_null
+
+      - name: email_promotion
+        description: Indicates whether the person has opted in for email promotions. A numerical value is used to represent the promotion status.
+        tests:
+          - not_null

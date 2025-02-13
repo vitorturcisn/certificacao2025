@@ -2,115 +2,102 @@ version: 2
 
 models:
   - name: fact_sales
-    description: Fact table containing sales order details, including quantities, prices, and total metrics. It captures the core sales data, such as order details, customer information, and sales performance.
+    description: |
+      Fact table containing detailed sales order information. This model captures sales data including product details, order quantities, prices, discount information, and order status. It is designed to track key metrics such as gross and net totals, shipping information, and customer details. The model is essential for analyzing sales performance, identifying trends, and understanding customer behaviors in relation to orders.
+
     columns:
-      - name: pk_product
-        description: Unique identifier for the product in the sales order.
+      - name: SALES_ORDER
+        description: Unique identifier for each sales order. This field is used to link all details related to a specific order.
         tests:
           - not_null
 
-      - name: pk_sales_order
-        description: Unique identifier for each sales order.
+      - name: PRODUCT_NAME
+        description: Name of the product in the sales order. This field provides the product's descriptive name.
         tests:
           - not_null
 
-      - name: product_name
-        description: Name of the product in the sales order.
+      - name: CATEGORY_NAME
+        description: The category to which the product belongs. It helps to categorize and analyze products by their types.
         tests:
           - not_null
 
-      - name: product_number
-        description: Unique identifier for the product number.
+      - name: SUB_CATEGORY_NAME
+        description: The sub-category within the category of the product. It provides more granular classification of the product.
         tests:
           - not_null
 
-      - name: order_qty
-        description: Quantity of the product ordered.
+      - name: ORDER_QTY
+        description: The quantity of the product ordered in the sales order.
         tests:
           - not_null
 
-      - name: unit_price
-        description: Price per unit of the product in the sales order.
+      - name: UNIT_PRICE
+        description: The price per unit of the product in the sales order, before any discounts are applied.
         tests:
           - not_null
 
-      - name: unit_price_discount
-        description: Discount applied to the unit price.
+      - name: UNIT_PRICE_DISCOUNT
+        description: The discount applied to the unit price of the product in the sales order.
         tests:
           - not_null
 
-      - name: order_date
-        description: Date the sales order was placed.
+      - name: ORDER_DATE
+        description: The date when the sales order was placed by the customer.
         tests:
           - not_null
 
-      - name: due_date
-        description: Date the sales order is expected to be fulfilled.
+      - name: DUE_DATE
+        description: The expected date by which the sales order should be fulfilled or delivered to the customer.
         tests:
           - not_null
 
-      - name: ship_date
-        description: Date the sales order was shipped.
+      - name: SHIP_DATE
+        description: The actual date when the sales order was shipped to the customer.
         tests:
           - not_null
 
-      - name: status
-        description: Current status of the sales order (e.g., pending, completed).
+      - name: STATUS
+        description: The current status of the sales order (e.g., pending, completed, canceled, etc.).
         tests:
           - not_null
 
-      - name: online_order
-        description: Flag indicating if the order was placed online.
+      - name: ORDER_TYPE
+        description: The type of order placed (e.g., standard, rush, etc.). This indicates the urgency or category of the order.
         tests:
           - not_null
 
-      - name: customer_id
-        description: Identifier for the customer who placed the order.
+      - name: CUSTOMER_ID
+        description: The unique identifier for the customer who placed the order. It links the sales order to the customer in the system.
         tests:
           - not_null
 
-      - name: salesperson_id
-        description: Identifier for the salesperson handling the order.
+      - name: SALESPERSON_ID
+        description: The identifier for the salesperson responsible for the sale. This helps in tracking sales performance per salesperson.
 
-      - name: territory_id
-        description: Identifier for the territory associated with the sales order.
+      - name: CREDIT_CARD_ID
+        description: The identifier for the credit card used by the customer to make the purchase. This links the transaction to the customer's payment method.
+
+      - name: GROSS_TOTAL
+        description: The total value of the order before any discounts are applied, representing the full price of the order.
         tests:
           - not_null
 
-      - name: bill_to_address_id
-        description: Identifier for the billing address of the customer.
+      - name: NET_TOTAL
+        description: The total value of the order after discounts have been applied, reflecting the actual amount the customer is billed.
         tests:
           - not_null
 
-      - name: ship_to_address_id
-        description: Identifier for the shipping address of the customer.
+      - name: LEAD_TIME_SHIPPING
+        description: The number of days between the order date and the ship date. This is useful for analyzing shipping efficiency and customer satisfaction.
         tests:
           - not_null
 
-      - name: credit_card_id
-        description: Identifier for the credit card used in the transaction.
-
-      - name: gross_total
-        description: Total value of the order before discounts and adjustments.
+      - name: ORDER_DELAYED
+        description: Flag indicating whether the order was delayed (i.e., the ship date is after the due date).
         tests:
           - not_null
 
-      - name: net_total
-        description: Total value of the order after discounts are applied.
-        tests:
-          - not_null
-
-      - name: lead_time_shipping
-        description: Lead time (in days) between the order date and the ship date.
-        tests:
-          - not_null
-
-      - name: order_delayed
-        description: Flag indicating whether the order was delayed (ship date after due date).
-        tests:
-          - not_null
-
-      - name: discount_applied
-        description: Flag indicating whether a discount was applied to the order.
+      - name: DISCOUNT_APPLIED
+        description: Flag indicating whether a discount was applied to the order. This helps in analyzing the impact of discounts on sales performance.
         tests:
           - not_null

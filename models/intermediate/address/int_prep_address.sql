@@ -6,7 +6,7 @@
 
     , enriched_state_province as (
         select *
-        from {{ ref('int_prep_location') }}
+        from {{ ref('int_prep_state_province') }}
     )
 
     , enriched_address as (
@@ -16,9 +16,7 @@
             enriched_state_province.state_province_name, 
             enriched_state_province.territory_name,      
             enriched_state_province.country_region_name, 
-            enriched_state_province.pk_state_province as state_province_id,
-            enriched_state_province.pk_territory as territory_id
-
+            
         from address
         left join enriched_state_province
             on enriched_state_province.pk_state_province = address.fk_state_province

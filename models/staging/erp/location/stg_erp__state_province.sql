@@ -12,8 +12,7 @@ with
             cast(STATEPROVINCECODE as varchar) as state_province_code,
             cast(ISONLYSTATEPROVINCEFLAG as boolean) as is_only_state_province,
             cast(NAME as varchar) as state_province_name,
-            cast(ROWGUID as varchar) as row_guid,
-            cast(MODIFIEDDATE as date) as modification_date
+
         from source_state_province
     )
 

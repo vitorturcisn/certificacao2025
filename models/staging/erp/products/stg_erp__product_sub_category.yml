@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: stg_erp__product_sub_category
+    description: This model renames and casts three key columns (`PRODUCTSUBCATEGORYID`, `PRODUCTCATEGORYID`, and `NAME`) from the `PRODUCTSUBCATEGORY` table, making them more usable for further analysis. The columns are renamed to `pk_product_subcategory`, `fk_product_category`, and `product_name`, with the appropriate data types (`INT` for the IDs and `VARCHAR` for the product name).
+    columns:
+      - name: pk_product_subcategory
+        description: Unique identifier for the product subcategory.
+        tests:
+          - not_null
+          - unique
+
+      - name: fk_product_category
+        description: Foreign key to the product category, representing the relationship between subcategory and category.
+        tests:
+          - not_null
+
+      - name: product_name
+        description: The name of the product subcategory.
+        tests:
+          - not_null

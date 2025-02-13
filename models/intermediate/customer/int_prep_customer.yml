@@ -1,9 +1,10 @@
 version: 2
 
 models:
-  - name: dim_customer
-    description: Dimension table containing information about customers, including associated store, salesperson, and territory.
-   
+  - name: int_prep_customer
+    description: |
+      This model enriches the `customer` data by adding store and person information. It combines the `customer` table, which contains customer details like customer ID, with the `store` table, which provides the store name and address, and the `person` table, which includes customer-related personal details like full name and email promotion preference. A LEFT JOIN is used to link the three tables based on their respective keys (`STORE_ID`, `PERSON_ID`), ensuring that all customers are included, even if they do not have corresponding store or person data. The model also uses `ROW_NUMBER()` to handle duplicate full names, appending a "2" to the name if it appears more than once.
+
     columns:
       - name: CUSTOMER_ID
         description: Unique identifier for the customer. This is the primary key used to link the customer with the store and person data.

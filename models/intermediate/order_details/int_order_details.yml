@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: int_order_details
+    description: This table contains enriched order details, combining product and order information. It includes detailed data about each product ordered, such as the product name, category, subcategory, order quantity, unit price, and applied discounts.
+    columns:
+      - name: pk_sales_order
+        description: Primary key that uniquely identifies each sales order.
+        tests:
+          - not_null
+          - unique
+
+      - name: product_name
+        description: Name of the product.
+        tests:
+          - not_null
+
+      - name: category_name
+        description: Name of the product's category.
+        tests:
+          - not_null
+
+      - name: sub_category_name
+        description: Name of the product's subcategory.
+        tests:
+          - not_null
+
+      - name: order_qty
+        description: Quantity of the product ordered.
+        tests:
+          - not_null
+
+      - name: unit_price
+        description: Unit price of the product.
+        tests:
+          - not_null
+
+      - name: unit_price_discount
+        description: Discount applied to the unit price of the product.
+        tests:
+          - not_null

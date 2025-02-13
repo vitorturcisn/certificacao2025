@@ -15,18 +15,5 @@ models:
 
       - name: store_id
         description: Foreign key referring to the store associated with the customer.
-        
-      - name: territory_id
-        description: Foreign key referring to the territory where the customer is located.
-        tests:
-          - not_null
 
-      - name: row_guid
-        description: Unique identifier for each row.
-        tests:
-          - not_null
 
-      - name: modification_date
-        description: The date when the customer record was last modified.
-        tests:
-          - not_null

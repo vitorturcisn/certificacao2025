@@ -1,8 +1,8 @@
-version: 2
+version: 2 
 
 sources:
   - name: erp_ADVENTURE_WORKS
-    description: 'This is the source for the ADVENTURE WORKS ERP system containing sales, products and transaction data.'
+    description: 'This is the source for the ADVENTURE WORKS ERP system containing sales, products, and transaction data.'
     database: FEA24_11
     schema: RAW_ADVENTURE_WORKS  
     tables:
@@ -14,45 +14,460 @@ sources:
             tests:
               - unique
               - not_null
+          - name: NAME
+            description: 'Product name.'
+          - name: PRODUCTNUMBER
+            description: 'Unique identifier for the product.'
+          - name: MAKEFLAG
+            description: 'Indicates if the product is manufactured in-house.'
+          - name: FINISHEDGOODSFLAG
+            description: 'Indicates if the product is a finished good.'
+          - name: COLOR
+            description: 'Product color.'
+          - name: SAFETYSTOCKLEVEL
+            description: 'Minimum stock level before reordering.'
+          - name: REORDERPOINT
+            description: 'Stock level at which reordering is triggered.'
+          - name: STANDARDCOST
+            description: 'Standard cost of the product.'
+          - name: LISTPRICE
+            description: 'List price of the product.'
+          - name: SIZE
+            description: 'Size of the product.'
+          - name: SIZEUNITMEASURECODE
+            description: 'Unit of measure for the product size.'
+          - name: WEIGHTUNITMEASURECODE
+            description: 'Unit of measure for the product weight.'
+          - name: WEIGHT
+            description: 'Weight of the product.'
+          - name: DAYSTOMANUFACTURE
+            description: 'Number of days required to manufacture the product.'
+          - name: PRODUCTLINE
+            description: 'Product line classification.'
+          - name: CLASS
+            description: 'Product class classification.'
+          - name: STYLE
+            description: 'Product style classification.'
+          - name: PRODUCTSUBCATEGORYID
+            description: 'Foreign key to product subcategory.'
+          - name: PRODUCTMODELID
+            description: 'Foreign key to product model.'
+          - name: SELLSTARTDATE
+            description: 'Date when the product started selling.'
+          - name: SELLENDDATE
+            description: 'Date when the product stopped selling.'
+          - name: DISCONTINUEDDATE
+            description: 'Date when the product was discontinued.'
+          - name: ROWGUID
+            description: 'Unique identifier for the row.'
+            tests:
+              - unique
+              - not_null
+          - name: MODIFIEDDATE
+            description: 'Date when the record was last modified.'
       - name: CREDITCARD
         description: 'Table containing credit card information.'
+        columns:
+          - name: CREDITCARDID
+            description: 'Unique identifier for the credit card.'
+            tests:
+              - unique
+              - not_null
+          - name: CARDTYPE
+            description: 'Type of credit card (e.g., Visa, Mastercard).'
+          - name: CARDNUMBER
+            description: 'Credit card number.'
+          - name: EXPMONTH
+            description: 'Expiration month of the credit card.'
+          - name: EXPYEAR
+            description: 'Expiration year of the credit card.'
+          - name: MODIFIEDDATE
+            description: 'Last modified date of the record.'
+
       - name: SALESREASON
         description: 'Sales reasons related to transactions.'
+        columns:
+          - name: SALESREASONID
+            description: 'Unique identifier for the sales reason.'
+            tests:
+              - unique
+              - not_null
+          - name: NAME
+            description: 'Name of the sales reason.'
+          - name: REASONTYPE
+            description: 'Type of sales reason (e.g., promotion, competition).'
+          - name: MODIFIEDDATE
+            description: 'Last modified date of the record.'
+
       - name: SALESORDERHEADERSALESREASON
         description: 'Relation between sales order headers and sales reasons.'
+        columns:
+          - name: SALESORDERID
+            description: 'Unique identifier for the sales order.'
+            tests:
+              - not_null
+          - name: SALESREASONID
+            description: 'Unique identifier for the sales reason.'
+          - name: MODIFIEDDATE
+            description: 'Last modified date of the record.'
+
       - name: SALESORDERHEADER
         description: 'Sales order headers.'
+        columns:
+          - name: SALESORDERID
+            description: 'Unique identifier for the sales order.'
+            tests:
+              - unique
+              - not_null
+          - name: REVISIONNUMBER
+            description: 'Revision number of the sales order.'
+          - name: ORDERDATE
+            description: 'Date when the order was placed.'
+          - name: DUEDATE
+            description: 'Date when the order is due.'
+          - name: SHIPDATE
+            description: 'Date when the order was shipped.'
+          - name: STATUS
+            description: 'Status of the sales order.'
+          - name: ONLINEORDERFLAG
+            description: 'Indicates if the order was placed online.'
+          - name: PURCHASEORDERNUMBER
+            description: 'Purchase order number associated with the sales order.'
+          - name: ACCOUNTNUMBER
+            description: 'Account number related to the sales order.'
+          - name: CUSTOMERID
+            description: 'Unique identifier for the customer.'
+          - name: SALESPERSONID
+            description: 'Unique identifier for the salesperson.'
+          - name: TERRITORYID
+            description: 'Unique identifier for the sales territory.'
+          - name: BILLTOADDRESSID
+            description: 'Billing address ID.'
+          - name: SHIPTOADDRESSID
+            description: 'Shipping address ID.'
+          - name: SHIPMETHODID
+            description: 'Shipping method ID.'
+          - name: CREDITCARDID
+            description: 'Credit card ID used for the transaction.'
+          - name: CREDITCARDAPPROVALCODE
+            description: 'Approval code for the credit card transaction.'
+          - name: CURRENCYRATEID
+            description: 'Exchange rate ID applied to the sales order.'
+          - name: SUBTOTAL
+            description: 'Subtotal amount for the order.'
+          - name: TAXAMT
+            description: 'Total tax amount for the order.'
+          - name: FREIGHT
+            description: 'Freight charge for the order.'
+          - name: TOTALDUE
+            description: 'Total amount due for the order.'
+          - name: COMMENT
+            description: 'Additional comments for the order.'
+          - name: ROWGUID
+            description: 'Unique row identifier.'
+            tests:
+              - unique
+              - not_null
+          - name: MODIFIEDDATE
+            description: 'Last modified date of the record.'
+
       - name: SALESORDERDETAIL
         description: 'Sales order details.'
-      - name: SPECIALOFFERPRODUCT
-        description: 'Association between special offers and products.'
-      - name: SPECIALOFFER
-        description: 'Special offers available to customers.'
+        columns:
+          - name: SALESORDERID
+            description: 'Unique identifier for the sales order.'
+          - name: SALESORDERDETAILID
+            description: 'Unique identifier for the sales order detail.'
+            tests:
+              - unique
+              - not_null
+          - name: CARRIERTRACKINGNUMBER
+            description: 'Tracking number for the shipping carrier.'
+          - name: ORDERQTY
+            description: 'Quantity of the ordered product.'
+          - name: PRODUCTID
+            description: 'Unique identifier for the product.'
+          - name: SPECIALOFFERID
+            description: 'Unique identifier for special offers applied.'
+          - name: UNITPRICE
+            description: 'Unit price of the product.'
+          - name: UNITPRICEDISCOUNT
+            description: 'Discount applied to the unit price.'
+          - name: ROWGUID
+            description: 'Unique row identifier.'
+            tests:
+              - unique
+              - not_null
+          - name: MODIFIEDDATE
+            description: 'Last modified date of the record.'
+
       - name: CUSTOMER
         description: 'Customer registration data.'
+        columns:
+          - name: CUSTOMERID
+            description: 'Unique identifier for the customer.'
+            tests:
+              - unique
+              - not_null
+          - name: PERSONID
+            description: 'Identifier linking to the person entity.'
+          - name: STOREID
+            description: 'Identifier linking to the store entity.'
+          - name: TERRITORYID
+            description: 'Identifier linking to the sales territory.'
+          - name: ROWGUID
+            description: 'Unique identifier for the row.'
+            tests:
+              - unique
+              - not_null
+          - name: MODIFIEDDATE
+            description: 'Last modification date.'
+
       - name: STORE
         description: 'Information about registered stores.'
-      - name: BUSINESSENTITY
-        description: 'Business entities in the system.'
+        columns:
+          - name: BUSINESSENTITYID
+            description: 'Unique identifier for the business entity.'
+            tests:
+              - unique
+              - not_null
+          - name: NAME
+            description: 'Name of the store.'
+          - name: SALESPERSONID
+            description: 'Identifier linking to the salesperson entity.'
+          - name: DEMOGRAPHICS
+            description: 'Demographic information of the store.'
+          - name: ROWGUID
+            description: 'Unique identifier for the row.'
+            tests:
+              - unique
+              - not_null
+          - name: MODIFIEDDATE
+            description: 'Last modification date.'
+
       - name: BUSINESSENTITYADDRESS
         description: 'Addresses associated with business entities.'
+        columns:
+          - name: BUSINESSENTITYID
+            description: 'Unique identifier for the business entity.'
+            tests:
+              - not_null
+          - name: ADDRESSID
+            description: 'Identifier linking to the address entity.'
+          - name: ADDRESSTYPEID
+            description: 'Identifier linking to the address type entity.'
+          - name: ROWGUID
+            description: 'Unique identifier for the row.'
+            tests:
+              - unique
+              - not_null
+          - name: MODIFIEDDATE
+            description: 'Last modification date.'
+
       - name: ADDRESS
         description: 'Table containing address data.'
+        columns:
+          - name: ADDRESSID
+            description: 'Unique identifier for the address.'
+            tests:
+              - unique
+              - not_null
+          - name: ADDRESSLINE1
+            description: 'First line of the address.'
+          - name: ADDRESSLINE2
+            description: 'Second line of the address (if applicable).'
+          - name: CITY
+            description: 'City where the address is located.'
+          - name: STATEPROVINCEID
+            description: 'Identifier for the state or province.'
+          - name: POSTALCODE
+            description: 'Postal code for the address.'
+          - name: SPATIALLOCATION
+            description: 'Geographical coordinates of the address.'
+          - name: ROWGUID
+            tests:
+              - unique
+              - not_null
+            description: 'Globally unique identifier for the row.'
+          - name: MODIFIEDDATE
+            description: 'Date and time the address record was last modified.'
+
+
       - name: STATEPROVINCE
         description: 'Information about states and provinces.'
+        columns:
+          - name: STATEPROVINCEID
+            description: 'Unique identifier for the state or province.'
+            tests:
+              - unique
+              - not_null
+          - name: STATEPROVINCECODE
+            description: 'Code representing the state or province.'
+          - name: COUNTRYREGIONCODE
+            description: 'Code representing the country or region.'
+          - name: ISONLYSTATEPROVINCEFLAG
+            description: 'Flag indicating if it is the only state or province.'
+          - name: NAME
+            description: 'Name of the state or province.'
+          - name: TERRITORYID
+            description: 'Identifier linking to the sales territory.'
+          - name: ROWGUID
+            description: 'Unique identifier for the row.'
+            tests:
+              - unique
+              - not_null
+          - name: MODIFIEDDATE
+            description: 'Last modification date.'
+
       - name: SALESTERRITORY
         description: 'Sales territories.'
+        columns:
+          - name: TERRITORYID
+            description: 'Unique identifier for the sales territory.'
+            tests:
+              - unique
+              - not_null
+          - name: NAME
+            description: 'Name of the sales territory.'
+          - name: COUNTRYREGIONCODE
+            description: 'Code representing the country or region.'
+          - name: GROUP
+            description: 'Group associated with the sales territory.'
+          - name: SALESYTD
+            description: 'Year-to-date sales amount.'
+          - name: SALESLASTYEAR
+            description: 'Sales amount from the previous year.'
+          - name: COSTYTD
+            description: 'Year-to-date cost amount.'
+          - name: COSTLASTYEAR
+            description: 'Cost amount from the previous year.'
+          - name: ROWGUID
+            description: 'Unique identifier for the row.'
+            tests:
+              - unique
+              - not_null
+          - name: MODIFIEDDATE
+            description: 'Last modification date.'
+
       - name: COUNTRYREGION
         description: 'Countries and regions relevant to sales.'
+        columns:
+          - name: COUNTRYREGIONCODE
+            description: 'Unique identifier for the country or region.'
+            tests:
+              - unique
+              - not_null
+          - name: NAME
+            description: 'Name of the country or region.'
+          - name: MODIFIEDDATE
+            description: 'Last modification date.'
+
       - name: PERSON
-        description: ARRUMAR
+        description: 'Table containing personal data of customers, employees, and vendors.'
+        columns:
+          - name: BUSINESSENTITYID
+            description: 'Unique identifier for the business entity.'
+            tests:
+              - unique
+              - not_null
+          - name: PERSONTYPE
+            description: 'Type of person (e.g., employee, customer, vendor).'
+          - name: NAMESTYLE
+            description: 'Indicator for name formatting style.'
+          - name: TITLE
+            description: 'Title of the person (e.g., Mr., Mrs.).'
+          - name: FIRSTNAME
+            description: 'First name of the person.'
+          - name: MIDDLENAME
+            description: 'Middle name of the person.'
+          - name: LASTNAME
+            description: 'Last name of the person.'
+          - name: SUFFIX
+            description: 'Suffix of the person (e.g., Jr., Sr.).'
+          - name: EMAILPROMOTION
+            description: 'Indicator for email promotion subscription.'
+          - name: ADDITIONALCONTACTINFO
+            description: 'Additional contact information of the person.'
+          - name: DEMOGRAPHICS
+            description: 'Demographic information of the person.'
+          - name: ROWGUID
+            description: 'Unique identifier for the row.'
+            tests:
+              - unique
+              - not_null
+          - name: MODIFIEDDATE
+            description: 'Last modification date.'
+
       - name: PRODUCTCATEGORY
-        description: ARRUMAR
+        description: 'Main categories of products available in the system.'
+        columns:
+          - name: PRODUCTCATEGORYID
+            description: 'Unique identifier for the product category.'
+            tests:
+              - unique
+              - not_null
+          - name: NAME
+            description: 'Name of the product category.'
+            tests:
+              - unique
+              - not_null
+          - name: ROWGUID
+            description: 'Unique identifier for the row.'
+            tests:
+              - unique
+              - not_null
+          - name: MODIFIEDDATE
+            description: 'Last modification date.'
+
       - name: PRODUCTSUBCATEGORY
-        description: ARRUMAR
+        description: 'Subcategories of products, providing more specific classifications within product categories.'
+        columns:
+          - name: PRODUCTSUBCATEGORYID
+            description: 'Unique identifier for the product subcategory.'
+            tests:
+              - unique
+              - not_null
+          - name: PRODUCTCATEGORYID
+            description: 'Identifier linking to the product category.'
+            tests:
+              - not_null
+          - name: NAME
+            description: 'Name of the product subcategory.'
+            tests:
+              - unique
+              - not_null
+          - name: ROWGUID
+            description: 'Unique identifier for the row.'
+            tests:
+              - unique
+              - not_null
+          - name: MODIFIEDDATE
+            description: 'Last modification date.'
+
       - name: SALESPERSON
-        description: ARRUMAR
-
-
-
-
+        description: 'Table containing information about sales representatives, including performance metrics and assigned territories.'
+        columns:
+          - name: BUSINESSENTITYID
+            description: 'Unique identifier for the business entity.'
+            tests:
+              - unique
+              - not_null
+          - name: TERRITORYID
+            description: 'Identifier linking to the sales territory.'
+          - name: SALESQUOTA
+            description: 'Sales quota assigned to the salesperson.'
+          - name: BONUS
+            description: 'Bonus received by the salesperson.'
+          - name: COMMISSIONPCT
+            description: 'Commission percentage of the salesperson.'
+          - name: SALESYTD
+            description: 'Year-to-date sales amount.'
+          - name: SALESLASTYEAR
+            description: 'Sales amount from the previous year.'
+          - name: ROWGUID
+            description: 'Unique identifier for the row.'
+            tests:
+              - unique
+              - not_null
+          - name: MODIFIEDDATE
+            description: 'Last modification date.'
